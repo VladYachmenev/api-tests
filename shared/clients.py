@@ -1,0 +1,41 @@
+import requests
+from abc import ABC, abstractmethod
+from typing import Any, Dict, Optional, Union
+
+
+class HttpClientInterface(ABC):
+    @abstractmethod
+    def get(self, url: str, **kwargs) -> requests.Response:
+        pass
+
+    @abstractmethod
+    def post(self, url, **kwargs) -> requests.Response:
+        pass
+
+    @abstractmethod
+    def put(self, url, **kwargs) -> requests.Response:
+        pass
+
+    @abstractmethod
+    def delete(self, url: str, **kwargs) -> requests.Response:
+        pass
+
+
+class HttpClient(HttpClientInterface):
+
+    def get(self, url, **kwargs):
+        return requests.get(url, **kwargs)
+
+    def post(self, url, **kwargs):
+        return requests.post(url, **kwargs)
+
+    def put(self, url, **kwargs):
+        return requests.put(url, **kwargs)
+
+    def delete(self, url: str, **kwargs):
+        return requests.delete(url, **kwargs)
+
+
+class ApiClient:
+    def __init__(self, client: HttpClientInterface):
+        self.client = client
