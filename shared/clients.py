@@ -1,7 +1,7 @@
 import requests
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional, Union
-
+from settings import settings
 
 class HttpClientInterface(ABC):
     @abstractmethod
@@ -37,5 +37,6 @@ class HttpClient(HttpClientInterface):
 
 
 class ApiClient:
-    def __init__(self, client: HttpClientInterface):
+    def __init__(self, url, client: HttpClientInterface):
+        self.url = settings.api_url
         self.client = client
