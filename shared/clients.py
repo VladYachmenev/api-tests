@@ -37,6 +37,6 @@ class HttpClient(HttpClientInterface):
 
 
 class ApiClient:
-    def __init__(self, url, client: HttpClientInterface):
+    def __init__(self, client: HttpClientInterface):
         self.url = settings.api_url
         self.client = client

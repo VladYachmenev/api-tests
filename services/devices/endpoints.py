@@ -1,5 +1,0 @@
-
-
-class EndpointsDevices:
-
-    ListOfAlLObjects = 'objects'

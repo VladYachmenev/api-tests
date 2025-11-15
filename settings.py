@@ -7,8 +7,7 @@ class Settings(BaseSettings):
         env_file_encoding='utf-8'
     )
 
-    base_url: str
-
+    base_url: str = "https://api.restful-api.dev"
     @property
     def api_url(self) -> str:
         return self.base_url
