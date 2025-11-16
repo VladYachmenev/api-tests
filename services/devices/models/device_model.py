@@ -1,8 +1,9 @@
 from pydantic import BaseModel, Field
 from typing import Optional
+from datetime import datetime
 
 
-class DeviceInfo(BaseModel):
+class DeviceResponseInfo(BaseModel):
     year: Optional[int] = None
     price: Optional[float] = None
     cpu_model: Optional[str] = Field(
@@ -16,10 +17,12 @@ class DeviceInfo(BaseModel):
         description='Размер жесткого диска'
     )
 
-    class Config:
-        validate_by_name = True
+
+class DeviceResponseModel(BaseModel):
+    id: str
+    name: str
+    data: DeviceResponseInfo
+    created_at: datetime = Field(alias='createdAt')
 
 
-class DeviceTestData(BaseModel):
-    name: Optional[str] = None
-    data: Optional[DeviceInfo] = None
+

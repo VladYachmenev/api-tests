@@ -1,5 +1,6 @@
 import pytest
 from services.devices.payloads.factories import generate_device_data
+from services.devices.models.device_model import DeviceResponseModel
 
 class TestsDevices:
 
@@ -10,5 +11,6 @@ class TestsDevices:
     def test_create_devices(self, function_devices_api):
         payload = generate_device_data().model_dump(by_alias=True)
         response = function_devices_api.create_devices_api(payload)
-        print(response.json())
+        data = DeviceResponseModel(**response.json())
+        print(data)
 
