@@ -7,5 +7,3 @@ from services.devices.api_devices import DevicesApi
 def function_devices_api() -> DevicesApi:
     client: HttpClient = HttpClient()
     return DevicesApi(client=client)
-
-

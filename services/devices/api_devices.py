@@ -12,3 +12,5 @@ class DevicesApi(ApiClient):
         params = [("id", device_id) for device_id in device_ids]
         return self.client.get(f"{self.url}/{self.endpoint}", params=params)
 
+    def create_devices_api(self, payload):
+        return self.client.post(f"{self.url}/{self.endpoint}", json=payload)

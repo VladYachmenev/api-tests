@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional, Union
 from settings import settings
 
+
 class HttpClientInterface(ABC):
     @abstractmethod
     def get(self, url: str, **kwargs) -> requests.Response:

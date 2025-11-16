@@ -1,16 +1,26 @@
-from dataclasses import dataclass, field
+from pydantic import BaseModel, Field
 from typing import Optional
 
 
-@dataclass
-class DeviceInfo:
+class DeviceInfo(BaseModel):
     year: Optional[int] = None
     price: Optional[float] = None
-    cpu_model: Optional[str] = field(default=None, metadata={'json': 'CPU model'})
-    hard_disk_size: Optional[str] = field(default=None, metadata={'json': 'Hard disk size'})
+    cpu_model: Optional[str] = Field(
+        default=None,
+        alias='CPU model',  # для JSON сериализации/десериализации
+        description='Модель процессора'
+    )
+    hard_disk_size: Optional[str] = Field(
+        default=None,
+        alias='Hard disk size',
+        description='Размер жесткого диска'
+    )
+
+    class Config:
+        # Позволяет использовать как оригинальные имена, так и алиасы
+        validate_by_name = True
 
 
-@dataclass
-class DeviceTestData:
+class DeviceTestData(BaseModel):
     name: Optional[str] = None
     data: Optional[DeviceInfo] = None
