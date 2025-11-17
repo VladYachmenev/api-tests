@@ -1,11 +1,11 @@
 from faker import Faker
 import random
-from services.devices.models.device_model import DeviceBase, DeviceInfo
+from services.devices.models.device_model import DeviceBase, DeviceDate
 faker_ru = Faker('ru_RU')
 
 
 def generate_device_data():
-    device_info = DeviceInfo(
+    device_info = DeviceDate(
         year=int(faker_ru.year()),
         price=random.uniform(1.0, 100.0),
         cpu_model=faker_ru.text(),

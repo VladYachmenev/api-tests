@@ -12,5 +12,14 @@ class DevicesApi(ApiClient):
         params = [("id", device_id) for device_id in device_ids]
         return self.client.get(f"{self.url}/{self.endpoint}", params=params)
 
+    def get_device_by_id_api(self, device_id):
+        return self.client.get(f"{self.url}/{self.endpoint}/{device_id}")
+
     def create_devices_api(self, payload):
         return self.client.post(f"{self.url}/{self.endpoint}", json=payload)
+
+    def update_device_api(self, payload, device_id):
+        return self.client.put(f"{self.url}/{self.endpoint}/{device_id}", json=payload)
+
+    def delete_device_api(self, device_id):
+        return self.client.delete(f"{self.url}/{self.endpoint}/{device_id}")
