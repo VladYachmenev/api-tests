@@ -18,6 +18,10 @@ class HttpClientInterface(ABC):
         pass
 
     @abstractmethod
+    def patch(self, url, **kwargs) -> requests.Response:
+        pass
+
+    @abstractmethod
     def delete(self, url: str, **kwargs) -> requests.Response:
         pass
 
@@ -32,6 +36,9 @@ class HttpClient(HttpClientInterface):
 
     def put(self, url, **kwargs):
         return requests.put(url, **kwargs)
+
+    def patch(self, url, **kwargs):
+        return requests.patch(url, **kwargs)
 
     def delete(self, url: str, **kwargs):
         return requests.delete(url, **kwargs)

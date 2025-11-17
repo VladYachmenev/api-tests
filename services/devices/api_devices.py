@@ -18,8 +18,11 @@ class DevicesApi(ApiClient):
     def create_devices_api(self, payload):
         return self.client.post(f"{self.url}/{self.endpoint}", json=payload)
 
-    def update_device_api(self, payload, device_id):
+    def update_full_device_api(self, payload, device_id):
         return self.client.put(f"{self.url}/{self.endpoint}/{device_id}", json=payload)
+
+    def update_partial_device_api(self, payload, device_id):
+        return self.client.patch(f"{self.url}/{self.endpoint}/{device_id}", json=payload)
 
     def delete_device_api(self, device_id):
         return self.client.delete(f"{self.url}/{self.endpoint}/{device_id}")

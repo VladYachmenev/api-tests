@@ -18,6 +18,10 @@ class DeviceDate(BaseModel):
     )
     model_config = ConfigDict(extra='allow', populate_by_name=True)
 
+    @classmethod
+    def create_list_of_fields(cls):
+        return list(cls.model_fields.keys())
+
 
 class DeviceBase(BaseModel):
     name: str
@@ -36,3 +40,12 @@ class DeviceAddResponse(DeviceBase):
 class DeviceUpdateResponse(DeviceBase):
     id: str
     updated_at: datetime = Field(alias='updatedAt')
+
+
+class DevicePartialUpdate(DeviceBase):
+    name: Optional[str] = None
+    data: Optional[DeviceDate] = None
+
+
+def make_list_for_parametrise():
+    return DeviceDate.create_list_of_fields() + ['name']

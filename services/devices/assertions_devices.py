@@ -2,7 +2,7 @@ from services.devices.models.device_model import DeviceBase, DeviceAddResponse, 
 from datetime import datetime
 
 
-def assert_devices(payload: DeviceBase, response_model: DeviceAddResponse | DeviceUpdateResponse):
+def assert_devices_core_fields(payload: DeviceBase, response_model: DeviceAddResponse | DeviceUpdateResponse):
     if isinstance(payload, DeviceBase):
         assert response_model.name == payload.name
         assert response_model.data == payload.data
@@ -19,3 +19,7 @@ def _assert_valid_timestamp(timestamp: datetime):
     """Проверяет валидность временной метки"""
     assert timestamp.tzinfo is not None
     assert timestamp <= datetime.now(timestamp.tzinfo)
+
+
+def assert_partial_device_update(payload, response_model):
+   pass
