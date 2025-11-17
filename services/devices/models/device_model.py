@@ -1,9 +1,9 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional
 from datetime import datetime
 
 
-class DeviceResponseInfo(BaseModel):
+class DeviceInfo(BaseModel):
     year: Optional[int] = None
     price: Optional[float] = None
     cpu_model: Optional[str] = Field(
@@ -16,13 +16,23 @@ class DeviceResponseInfo(BaseModel):
         alias='Hard disk size',
         description='Размер жесткого диска'
     )
+    model_config = ConfigDict(extra='allow', populate_by_name=True)
 
 
-class DeviceResponseModel(BaseModel):
-    id: str
+class DeviceBase(BaseModel):
     name: str
-    data: DeviceResponseInfo
+    data: Optional[DeviceInfo] = None
+
+
+class DeviceGet(DeviceBase):
+    id: str
+
+
+class DeviceAddResponse(DeviceBase):
+    id: str
     created_at: datetime = Field(alias='createdAt')
 
 
-
+class DeviceUpdateResponse(DeviceBase):
+    id: str
+    updated_at: datetime = Field(alias='updatedAt')

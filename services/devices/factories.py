@@ -1,6 +1,6 @@
 from faker import Faker
 import random
-from services.devices.payloads.data import DeviceTestData, DeviceInfo
+from services.devices.models.device_model import DeviceBase, DeviceInfo
 faker_ru = Faker('ru_RU')
 
 
@@ -11,4 +11,4 @@ def generate_device_data():
         cpu_model=faker_ru.text(),
         hard_disk_size=faker_ru.text())
 
-    return DeviceTestData(name=faker_ru.word(), data=device_info)
+    return DeviceBase(name=faker_ru.word(), data=device_info)

@@ -1,5 +1,5 @@
 
 
 pytest_plugins = (
-'services.devices.fixtures',
+'services.devices.fixtures_devices',
 )
