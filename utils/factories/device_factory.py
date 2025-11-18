@@ -1,10 +1,10 @@
 from faker import Faker
 import random
-from services.devices.models.device_model import DeviceBase, DeviceDate, DevicePartialUpdate
+from api.models.device_model import DeviceBase, DeviceDate, DevicePartialUpdate
 faker_ru = Faker('ru_RU')
 
 
-def generate_device_data():
+def generate_full_payload():
     device_info = DeviceDate(
         year=int(faker_ru.year()),
         price=random.uniform(1.0, 100.0),
@@ -14,8 +14,8 @@ def generate_device_data():
     return DeviceBase(name=faker_ru.word(), data=device_info)
 
 
-def generate_device_data_for_partial_update(field):
-    data_fields = DeviceDate.create_list_of_fields()
+def generate_partial_update_payload(field):
+    data_fields = ['year', 'price', 'cpu_model', 'hard_disk_size']
     default_fields = ['name']
     if field in data_fields:
         device_info_data = {}
@@ -32,7 +32,4 @@ def generate_device_data_for_partial_update(field):
     if field in default_fields:
         if field == 'name':
             return DevicePartialUpdate(name=faker_ru.text())
-
-
-print(generate_device_data_for_partial_update('year').model_dump(exclude_none=True))
 

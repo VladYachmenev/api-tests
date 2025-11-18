@@ -1,8 +1,7 @@
-from shared.clients import ApiClient
-from settings import settings
+from api.clients.base_clients import ApiClient
 
 
-class DevicesApi(ApiClient):
+class DeviceApiClient(ApiClient):
     endpoint = 'objects'
 
     def get_all_devices_api(self):

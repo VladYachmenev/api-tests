@@ -8,13 +8,11 @@ class DeviceDate(BaseModel):
     price: Optional[float] = None
     cpu_model: Optional[str] = Field(
         default=None,
-        alias='CPU model',
-        description='Модель процессора'
+        alias='CPU model'
     )
     hard_disk_size: Optional[str] = Field(
         default=None,
-        alias='Hard disk size',
-        description='Размер жесткого диска'
+        alias='Hard disk size'
     )
     model_config = ConfigDict(extra='allow', populate_by_name=True)
 
@@ -28,7 +26,7 @@ class DeviceBase(BaseModel):
     data: Optional[DeviceDate] = None
 
 
-class DeviceGet(DeviceBase):
+class DeviceGetResponse(DeviceBase):
     id: str
 
 
@@ -47,5 +45,5 @@ class DevicePartialUpdate(DeviceBase):
     data: Optional[DeviceDate] = None
 
 
-def make_list_for_parametrise():
-    return DeviceDate.create_list_of_fields() + ['name']
+class DeviceDeleteResponse:
+    message: 'str'
