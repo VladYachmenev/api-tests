@@ -1,14 +1,12 @@
-from pydantic import ValidationError
 from requests import Response
-from pydantic import BaseModel
 
 
-def validate_schema(instance: dict, model):
-    return model(**instance)
+def validate_schema(instance: Response, model):
+    return model(**instance.json())
 
 
-def validate_scheme_for_array(instance, model):
-    return [model(**item) for item in instance]
+def validate_scheme_for_array(instance: Response, model):
+    return [model(**item) for item in instance.json()]
 
 
 def assert_status_code(response: Response, expected_code: int) -> None:

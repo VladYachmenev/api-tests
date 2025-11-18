@@ -29,6 +29,10 @@ def assert_partial_device_update(payload: DevicePartialUpdate, response_model: D
             assert actual_value == expected_value
 
 
+def assert_delete_device(response_model, device_id):
+    assert response_model.message == f"Object with id = {device_id}, has been deleted."
+
+
 def _assert_valid_timestamp(timestamp: datetime):
     assert timestamp.tzinfo is not None
     assert timestamp <= datetime.now(timestamp.tzinfo)

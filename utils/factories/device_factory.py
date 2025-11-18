@@ -1,6 +1,7 @@
 from faker import Faker
 import random
 from api.models.device_model import DeviceBase, DeviceDate, DevicePartialUpdate
+
 faker_ru = Faker('ru_RU')
 
 
@@ -32,4 +33,3 @@ def generate_partial_update_payload(field):
     if field in default_fields:
         if field == 'name':
             return DevicePartialUpdate(name=faker_ru.text())
-

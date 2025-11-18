@@ -47,3 +47,4 @@ class DevicePartialUpdate(DeviceBase):
 
 class DeviceDeleteResponse:
     message: 'str'
+
