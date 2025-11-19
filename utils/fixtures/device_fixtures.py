@@ -11,7 +11,7 @@ def function_devices_api() -> DeviceApiClient:
 
 
 @pytest.fixture(scope='function')
-def function_create_device_api(function_devices_api):
+def function_create_device_api(function_devices_api: DeviceApiClient):
     payload = generate_full_payload()
     response = function_devices_api.create_devices_api(payload.model_dump(by_alias=True))
     yield response.json()['id']

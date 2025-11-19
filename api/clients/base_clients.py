@@ -1,4 +1,5 @@
 import requests
+from requests import Response
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional, Union
 from settings import settings
@@ -6,23 +7,23 @@ from settings import settings
 
 class HttpClientInterface(ABC):
     @abstractmethod
-    def get(self, url: str, **kwargs) -> requests.Response:
+    def get(self, url: str, **kwargs) -> Response:
         pass
 
     @abstractmethod
-    def post(self, url, **kwargs) -> requests.Response:
+    def post(self, url: str, **kwargs) -> Response:
         pass
 
     @abstractmethod
-    def put(self, url, **kwargs) -> requests.Response:
+    def put(self, url: str, **kwargs) -> Response:
         pass
 
     @abstractmethod
-    def patch(self, url, **kwargs) -> requests.Response:
+    def patch(self, url: str, **kwargs) -> Response:
         pass
 
     @abstractmethod
-    def delete(self, url: str, **kwargs) -> requests.Response:
+    def delete(self, url: str, **kwargs) -> Response:
         pass
 
 
