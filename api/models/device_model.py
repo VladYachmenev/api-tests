@@ -3,7 +3,7 @@ from typing import Optional
 from datetime import datetime
 
 
-class DeviceDate(BaseModel):
+class DeviceData(BaseModel):
     year: Optional[int] = None
     price: Optional[float] = None
     cpu_model: Optional[str] = Field(
@@ -23,7 +23,7 @@ class DeviceDate(BaseModel):
 
 class DeviceBase(BaseModel):
     name: str
-    data: Optional[DeviceDate] = None
+    data: Optional[DeviceData] = None
 
 
 class DeviceGetResponse(DeviceBase):
@@ -42,9 +42,9 @@ class DeviceUpdateResponse(DeviceBase):
 
 class DevicePartialUpdate(DeviceBase):
     name: Optional[str] = None
-    data: Optional[DeviceDate] = None
+    data: Optional[DeviceData] = None
 
 
-class DeviceDeleteResponse:
+class DeviceDeleteResponse(BaseModel):
     message: 'str'
 

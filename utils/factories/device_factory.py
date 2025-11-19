@@ -1,12 +1,12 @@
 from faker import Faker
 import random
-from api.models.device_model import DeviceBase, DeviceDate, DevicePartialUpdate
+from api.models.device_model import DeviceBase, DeviceData, DevicePartialUpdate
 
 faker_ru = Faker('ru_RU')
 
 
 def generate_full_payload():
-    device_info = DeviceDate(
+    device_info = DeviceData(
         year=int(faker_ru.year()),
         price=random.uniform(1.0, 100.0),
         cpu_model=faker_ru.text(),
@@ -28,7 +28,7 @@ def generate_partial_update_payload(field):
             device_info_data[field] = faker_ru.text()
         elif field == 'hard_disk_size':
             device_info_data[field] = faker_ru.text()
-        device_info = DeviceDate(**device_info_data)
+        device_info = DeviceData(**device_info_data)
         return DevicePartialUpdate(data=device_info)
     if field in default_fields:
         if field == 'name':

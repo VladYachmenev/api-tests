@@ -12,7 +12,11 @@ from utils.assertions.base_assertions import (
     validate_schema,
     validate_scheme_for_array
 )
-from utils.assertions.device_assertions import assert_devices_core_fields, assert_partial_device_update, assert_delete_device
+from utils.assertions.device_assertions import (
+    assert_devices_core_fields,
+    assert_partial_device_update,
+    assert_delete_device
+)
 
 from utils.factories.device_factory import (
     generate_full_payload,
@@ -28,7 +32,7 @@ class TestsDevicesApi:
         assert_status_code(response, 200)
         validate_scheme_for_array(response, DeviceGetResponse)
 
-    def test_get_devices_by_id(self, function_devices_api):
+    def test_get_devices_by_ids(self, function_devices_api):
         response = function_devices_api.get_devices_by_ids_api(1, 2, 3)
         assert_status_code(response, 200)
         validate_scheme_for_array(response, DeviceGetResponse)
@@ -68,4 +72,4 @@ class TestsDevicesApi:
         response = function_devices_api.delete_device_api(device_id)
         assert_status_code(response, 200)
         response_model = validate_schema(response, DeviceDeleteResponse)
-        assert_delete_device(response_model=response_model,device_id=device_id)
+        assert_delete_device(response_model=response_model, device_id=device_id)
