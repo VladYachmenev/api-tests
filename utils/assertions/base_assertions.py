@@ -1,12 +1,19 @@
 from requests import Response
+from pydantic import ValidationError
 
 
 def validate_schema(instance: Response, model):
-    return model(**instance.json())
+    try:
+        return model(**instance.json())
+    except ValidationError:
+        raise
 
 
 def validate_scheme_for_array(instance: Response, model):
-    return [model(**item) for item in instance.json()]
+    try:
+        return [model(**item) for item in instance.json()]
+    except ValidationError:
+        raise
 
 
 def assert_status_code(response: Response, expected_code: int) -> None:

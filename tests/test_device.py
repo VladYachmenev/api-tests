@@ -1,5 +1,5 @@
 import pytest
-
+import allure
 from api.models.device_model import (
     DeviceAddResponse,
     DeviceGetResponse,
@@ -24,9 +24,9 @@ from utils.factories.device_factory import (
 )
 
 
+@allure.suite('my_tests')
 class TestsDevicesApi:
     """Tests for Devices API endpoints"""
-
     def test_get_devices(self, function_devices_api):
         response = function_devices_api.get_all_devices_api()
         assert_status_code(response, 200)
@@ -57,6 +57,7 @@ class TestsDevicesApi:
         response_model = validate_schema(response, DeviceUpdateResponse)
         assert_devices_core_fields(payload=payload, response_model=response_model)
 
+    @allure.title('test_patch')
     @pytest.mark.parametrize('field', ['name', 'year', 'price', 'cpu_model', 'hard_disk_size'])
     def test_partial_update_device(self, function_devices_api, function_create_device_api, field):
         device_id = function_create_device_api
