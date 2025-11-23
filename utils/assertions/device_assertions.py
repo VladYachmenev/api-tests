@@ -6,8 +6,10 @@ from api.models.device_model import (
     DeviceUpdateResponse,
     DeviceDeleteResponse,
 )
+import allure
 
 
+@allure.step('Validating core fields')
 def assert_devices_core_fields(payload: DeviceBase, response_model: DeviceAddResponse | DeviceUpdateResponse):
     assert response_model.name == payload.name, f"Name mismatch: expected {payload.name}, got {response_model.name}"
     assert response_model.data == payload.data, f"Data mismatch: expected {payload.data}, got {response_model.data}"
@@ -18,6 +20,7 @@ def assert_devices_core_fields(payload: DeviceBase, response_model: DeviceAddRes
         assert response_model.updated_at is not None, "updated_at should not be None"
 
 
+@allure.step('Validating changed fields')
 def assert_partial_device_update(payload: DevicePartialUpdate, response_model: DeviceUpdateResponse):
     for field_name in payload.model_fields_set:
         expected_value = getattr(payload, field_name)
@@ -37,6 +40,7 @@ def assert_partial_device_update(payload: DevicePartialUpdate, response_model: D
             )
 
 
+@allure.step('Validating deletion message')
 def assert_delete_device(response_model: DeviceDeleteResponse, device_id: str):
     expected_message = f"Object with id = {device_id} has been deleted."
     assert response_model.message == expected_message, (

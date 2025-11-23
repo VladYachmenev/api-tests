@@ -1,10 +1,12 @@
 from faker import Faker
 import random
 from api.models.device_model import DeviceBase, DeviceData, DevicePartialUpdate
+import allure
 
 faker_ru = Faker('ru_RU')
 
 
+@allure.step('Preparing full payload')
 def generate_full_payload():
     device_info = DeviceData(
         year=int(faker_ru.year()),
@@ -15,6 +17,7 @@ def generate_full_payload():
     return DeviceBase(name=faker_ru.word(), data=device_info)
 
 
+@allure.step('Preparing payload for partial update')
 def generate_partial_update_payload(field):
     data_fields = ['year', 'price', 'cpu_model', 'hard_disk_size']
     default_fields = ['name']
