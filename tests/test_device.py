@@ -20,7 +20,8 @@ from utils.assertions.device_assertions import (
 
 from utils.factories.device_factory import (
     generate_full_payload,
-    generate_partial_update_payload
+    generate_partial_update_payload,
+    generate_payload_with_only_required_fields
 )
 
 
@@ -28,6 +29,7 @@ from utils.factories.device_factory import (
 @allure.story('DevicesApi')
 class TestsDevicesApi:
     """Tests for Devices API endpoints"""
+
     @allure.title('Get devices')
     def test_get_devices(self, function_devices_api):
         response = function_devices_api.get_all_devices_api()
@@ -81,3 +83,11 @@ class TestsDevicesApi:
         assert_status_code(response, 200)
         response_model = validate_schema(response.json(), DeviceDeleteResponse)
         assert_delete_device(response_model=response_model, device_id=device_id)
+
+    @allure.title('Create device with only required fields')
+    def test_create_device_with_only_required_fields(self, function_devices_api):
+        payload = generate_payload_with_only_required_fields()
+        response = function_devices_api.create_devices_api(payload.model_dump(by_alias=True, exclude_none=True))
+        assert_status_code(response, 200)
+        response_model = validate_schema(response.json(), DeviceAddResponse)
+        assert_devices_core_fields(payload=payload, response_model=response_model)

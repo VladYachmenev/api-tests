@@ -1,0 +1,9 @@
+{
+  "method": "DELETE",
+  "url": "https://api.restful-api.dev/objects/ff8081819782e69e019ab5eef6716388",
+  "status_code": 404,
+  "time_ms": 419.69,
+  "response_body": {
+    "error": "Object with id = ff8081819782e69e019ab5eef6716388 doesn't exist."
+  }
+}

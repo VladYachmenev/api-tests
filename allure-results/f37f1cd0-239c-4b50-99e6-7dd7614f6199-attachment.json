@@ -1,0 +1,19 @@
+{
+  "method": "PATCH",
+  "url": "https://api.restful-api.dev/objects/ff8081819782e69e019ab5e22a636363",
+  "status_code": 200,
+  "time_ms": 483.77,
+  "request_body": {
+    "data": {
+      "year": 2004
+    }
+  },
+  "response_body": {
+    "id": "ff8081819782e69e019ab5e22a636363",
+    "name": "тесно",
+    "updatedAt": "2025-11-24T12:41:29.926+00:00",
+    "data": {
+      "year": 2004
+    }
+  }
+}

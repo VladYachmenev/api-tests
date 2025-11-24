@@ -1,0 +1,19 @@
+{
+  "method": "PATCH",
+  "url": "https://api.restful-api.dev/objects/ff8081819782e69e019ab5e49a98636e",
+  "status_code": 200,
+  "time_ms": 420.4,
+  "request_body": {
+    "data": {
+      "year": 1996
+    }
+  },
+  "response_body": {
+    "id": "ff8081819782e69e019ab5e49a98636e",
+    "name": "коричневый",
+    "updatedAt": "2025-11-24T12:44:09.678+00:00",
+    "data": {
+      "year": 1996
+    }
+  }
+}

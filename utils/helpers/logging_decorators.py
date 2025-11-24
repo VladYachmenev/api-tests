@@ -25,12 +25,11 @@ def logging_api_call(func):
                 log_info['request_body'] = json.loads(body)
             except:
                 log_info["request_body"] = str(response.request.body)
-
-        try:
-            if 'application/json' in response.headers.get('content-type', ''):
+        if 'application/json' in response.headers.get('content-type', ''):
+            try:
                 log_info["response_body"] = response.json()
-        except:
-            pass
+            except:
+                pass
 
         allure.attach(
             json.dumps(log_info, indent=2, ensure_ascii=False),

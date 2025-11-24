@@ -1,0 +1,19 @@
+{
+  "method": "PATCH",
+  "url": "https://api.restful-api.dev/objects/ff8081819782e69e019ab5e22fa86364",
+  "status_code": 200,
+  "time_ms": 475.54,
+  "request_body": {
+    "data": {
+      "price": 59.838760600524225
+    }
+  },
+  "response_body": {
+    "id": "ff8081819782e69e019ab5e22fa86364",
+    "name": "через",
+    "updatedAt": "2025-11-24T12:41:31.290+00:00",
+    "data": {
+      "price": 59.838760600524225
+    }
+  }
+}

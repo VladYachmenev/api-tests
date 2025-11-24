@@ -35,3 +35,7 @@ Thumbs.db
 # Local configuration
 local_settings.py
 .env.local
+
+allure-results/
+allure-report/
+.allure/

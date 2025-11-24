@@ -1,0 +1,18 @@
+{
+  "method": "POST",
+  "url": "https://api.restful-api.dev/objects",
+  "status_code": 405,
+  "time_ms": 1217.64,
+  "request_body": {
+    "name": "разнообразный",
+    "data": {
+      "year": 1995,
+      "price": 96.45770619008577,
+      "CPU model": "Спичка граница да. Адвокат социалистический мелочь палка.",
+      "Hard disk size": "Ленинград очередной неожиданно степь другой. Факультет зеленый отражение иной нервно важный."
+    }
+  },
+  "response_body": {
+    "error": "We are very sorry but you reached your limit of requests per day. Our current limit is equal to 100 requests per day. The reason for that is the fact that servers cost money and 200 requests per user per day is all that we can afford at the moment. Tomorrow the limit will reset and you will be able to continue. Thanks and have a good day!"
+  }
+}

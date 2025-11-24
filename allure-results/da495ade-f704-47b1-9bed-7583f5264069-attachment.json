@@ -1,0 +1,19 @@
+{
+  "method": "PATCH",
+  "url": "https://api.restful-api.dev/objects/ff8081819782e69e019ab5e4a13c636f",
+  "status_code": 200,
+  "time_ms": 515.34,
+  "request_body": {
+    "data": {
+      "price": 67.2256579640881
+    }
+  },
+  "response_body": {
+    "id": "ff8081819782e69e019ab5e4a13c636f",
+    "name": "изредка",
+    "updatedAt": "2025-11-24T12:44:11.457+00:00",
+    "data": {
+      "price": 67.2256579640881
+    }
+  }
+}

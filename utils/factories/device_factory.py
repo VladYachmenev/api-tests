@@ -17,6 +17,11 @@ def generate_full_payload():
     return DeviceBase(name=faker_ru.word(), data=device_info)
 
 
+@allure.step('Preparing payload with only required fields')
+def generate_payload_with_only_required_fields():
+    return DeviceBase(name=faker_ru.word())
+
+
 @allure.step('Preparing payload for partial update')
 def generate_partial_update_payload(field):
     data_fields = ['year', 'price', 'cpu_model', 'hard_disk_size']
