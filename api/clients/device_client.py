@@ -1,15 +1,18 @@
 from api.clients.base_clients import ApiClient
 import allure
+from utils.helpers.logging_decorators import logging_api_call
 
 
 class DeviceApiClient(ApiClient):
     endpoint = 'objects'
 
     @allure.step('Getting all devices')
+    @logging_api_call
     def get_all_devices_api(self):
         return self.client.get(f"{self.url}/{self.endpoint}")
 
     @allure.step('Getting devices by ids')
+    @logging_api_call
     def get_devices_by_ids_api(self, *device_ids):
         params = [("id", device_id) for device_id in device_ids]
         return self.client.get(f"{self.url}/{self.endpoint}", params=params)
