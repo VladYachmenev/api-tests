@@ -84,7 +84,7 @@ class TestsDevicesApi:
         response_model = validate_schema(response.json(), DeviceDeleteResponse)
         assert_delete_device(response_model=response_model, device_id=device_id)
 
-    @allure.title('Create device with only required fields')
+    @allure.title('Create device with only required fields!')
     def test_create_device_with_only_required_fields(self, function_devices_api):
         payload = generate_payload_with_only_required_fields()
         response = function_devices_api.create_devices_api(payload.model_dump(by_alias=True, exclude_none=True))
