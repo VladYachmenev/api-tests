@@ -1,9 +1,0 @@
-{
-  "method": "DELETE",
-  "url": "https://api.restful-api.dev/objects/ff8081819782e69e019ab5e49a98636e",
-  "status_code": 200,
-  "time_ms": 451.07,
-  "response_body": {
-    "message": "Object with id = ff8081819782e69e019ab5e49a98636e has been deleted."
-  }
-}
