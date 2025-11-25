@@ -29,22 +29,36 @@ class DeviceBase(BaseModel):
 class DeviceGetResponse(DeviceBase):
     id: str
 
+    def __repr__(self):
+        return f"DeviceGetResponse"
+
 
 class DeviceAddResponse(DeviceBase):
     id: str
     created_at: datetime = Field(alias='createdAt')
+
+    def __repr__(self):
+        return f"DeviceAddResponse"
 
 
 class DeviceUpdateResponse(DeviceBase):
     id: str
     updated_at: datetime = Field(alias='updatedAt')
 
+    def __repr__(self):
+        return f"DeviceUpdateResponse"
+
 
 class DevicePartialUpdate(DeviceBase):
     name: Optional[str] = None
     data: Optional[DeviceData] = None
 
+    def __repr__(self):
+        return f"DevicePartialUpdate"
+
 
 class DeviceDeleteResponse(BaseModel):
-    message: 'str'
+    message: str
 
+    def __repr__(self):
+        return f"DeviceDeleteResponse"
