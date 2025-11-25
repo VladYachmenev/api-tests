@@ -28,24 +28,27 @@ class HttpClientInterface(ABC):
 
 
 class HttpClient(HttpClientInterface):
+    def __init__(self):
+        self.session = requests.session()
 
     def get(self, url, **kwargs):
-        return requests.get(url, **kwargs)
+        return self.session.get(url, **kwargs)
 
     def post(self, url, **kwargs):
-        return requests.post(url, **kwargs)
+        return self.session.post(url, **kwargs)
 
     def put(self, url, **kwargs):
-        return requests.put(url, **kwargs)
+        return self.session.put(url, **kwargs)
 
     def patch(self, url, **kwargs):
-        return requests.patch(url, **kwargs)
+        return self.session.patch(url, **kwargs)
 
     def delete(self, url: str, **kwargs):
-        return requests.delete(url, **kwargs)
+        return self.session.delete(url, **kwargs)
 
 
 class ApiClient:
     def __init__(self, client: HttpClientInterface):
         self.url = settings.api_url
         self.client = client
+

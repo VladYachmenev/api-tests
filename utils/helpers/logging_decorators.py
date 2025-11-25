@@ -25,7 +25,7 @@ def logging_api_call(func):
                 log_info['request_body'] = json.loads(body)
             except:
                 log_info["request_body"] = str(response.request.body)
-        if 'application/json' in response.headers.get('content-type', ''):
+        if 'application/json' in response.headers.get('content-type', '') and len(response.content) > 0:
             try:
                 log_info["response_body"] = response.json()
             except:
